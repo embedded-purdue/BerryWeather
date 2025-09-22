@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/CMakeFiles/bootloader
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/CMakeFiles/bootloader.rule
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/CMakeFiles/bootloader-complete.rule
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
