@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "esp32_satellite",
-    "project_version":    "a27ac2b-dirty",
+    "project_version":    "1e01fa1-dirty",
     "project_path":       "/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite",
     "idf_path":           "/Users/connorpowell/esp/v5.5.1/esp-idf",
     "build_dir":          "/Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_satellite/build",

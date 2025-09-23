@@ -11,32 +11,105 @@
 #define RYLR998_NRST_PIN     GPIO_NUM_4    // (active low) reset pin
 #define BUF_SIZE        1024
 
-void at_command_task(void *arg)
-{
-    vTaskDelay(pdMS_TO_TICKS(500));
-    const char *commands[] = {
-        "AT\r\n",
-        "AT+VER?\r\n",
-        "AT+UID?\r\n"
-    };
-    const int num_commands = sizeof(commands) / sizeof(commands[0]);
 
-    for (int i = 0; i < num_commands; i++) {
-        // Send command
-        uart_write_bytes(RYLR998_UART_PORT, commands[i], strlen(commands[i]));
-        printf("Sent: %s", commands[i]);
 
-        // Wait for response
-        uint8_t data[BUF_SIZE];
-        int len = uart_read_bytes(RYLR998_UART_PORT, data, BUF_SIZE - 1, pdMS_TO_TICKS(1000));
-        if (len > 0) {
-            data[len] = '\0';
-            printf("Received: %s\n", data);
-        }
+#define SATELLITE_DEVICE
+// #define MM_DEVICE
+
+#ifdef SATELLITE_DEVICE
+    // Function to send LoRa message with AT+SEND command
+    void send_lora_message(uint8_t address, const char* message) {
+        char at_command[256];  // Buffer for the complete AT command
+        int message_length = strlen(message);
+        
+        // Format: AT+SEND=address,length,message
+        snprintf(at_command, sizeof(at_command), "AT+SEND=%d,%d,%s\r\n", 
+                address, message_length, message);
+        
+        // Send the AT command
+        uart_write_bytes(RYLR998_UART_PORT, at_command, strlen(at_command));
+        printf("Sent: %s", at_command);
     }
 
-    vTaskDelete(NULL);
-}
+    void send_test(void *arg)
+    {
+        vTaskDelay(pdMS_TO_TICKS(5000));
+        const char *message = "Hello from ESP32 via RYLR998!"; 
+
+        // semd message to MM device
+        send_lora_message(1, message);
+        vTaskDelete(NULL);
+    }
+
+    void lora_satellite_setup(void *arg)
+    {
+        vTaskDelay(pdMS_TO_TICKS(500));
+        const char *commands[] = {
+            "AT\r\n",
+            "AT+VER?\r\n",
+            "AT+UID?\r\n",
+            "AT+MODE=0\r\n",
+            "AT+ADDRESS=0\r\n",
+        };
+        const int num_commands = sizeof(commands) / sizeof(commands[0]);
+
+        for (int i = 0; i < num_commands; i++) {
+            // Send command
+            uart_write_bytes(RYLR998_UART_PORT, commands[i], strlen(commands[i]));
+            printf("Sent: %s", commands[i]);
+
+            // Wait for response
+            uint8_t data[BUF_SIZE];
+            int len = uart_read_bytes(RYLR998_UART_PORT, data, BUF_SIZE - 1, pdMS_TO_TICKS(1000));
+            if (len > 0) {
+                data[len] = '\0';
+                printf("Received: %s\n", data);
+            }
+        }
+
+        xTaskCreate(send_test, "send_test", 2048, NULL, 5, NULL);
+        vTaskDelete(NULL);
+    }
+#endif
+
+#ifdef MM_DEVICE
+    void lora_mm_setup(void *arg)
+    {
+        vTaskDelay(pdMS_TO_TICKS(500));
+        const char *commands[] = {
+            "AT\r\n",
+            "AT+VER?\r\n",
+            "AT+UID?\r\n",
+            "AT+MODE=0\r\n",
+            "AT+ADDRESS=1\r\n",
+        };
+        const int num_commands = sizeof(commands) / sizeof(commands[0]);
+
+        for (int i = 0; i < num_commands; i++) {
+            // Send command
+            uart_write_bytes(RYLR998_UART_PORT, commands[i], strlen(commands[i]));
+            printf("Sent: %s", commands[i]);
+
+            // Wait for response
+            uint8_t data[BUF_SIZE];
+            int len = uart_read_bytes(RYLR998_UART_PORT, data, BUF_SIZE - 1, pdMS_TO_TICKS(1000));
+            if (len > 0) {
+                data[len] = '\0';
+                printf("Received: %s\n", data);
+            }
+        }
+
+        // listen for incoming messages
+        while (1) {
+            uint8_t data[BUF_SIZE];
+            int len = uart_read_bytes(RYLR998_UART_PORT, data, BUF_SIZE - 1, pdMS_TO_TICKS(1000));
+            if (len > 0) {
+                data[len] = '\0';
+                printf("Received: %s\n", data);
+            }
+        }
+    }
+#endif
 
 void app_main(void)
 {
@@ -57,9 +130,6 @@ void app_main(void)
     gpio_config_t io_conf = {
         .pin_bit_mask = (1ULL << RYLR998_NRST_PIN),
         .mode = GPIO_MODE_OUTPUT_OD,
-        .pull_up_en = GPIO_PULLUP_DISABLE,
-        .pull_down_en = GPIO_PULLDOWN_ENABLE,
-        .intr_type = GPIO_INTR_DISABLE
     };
     gpio_config(&io_conf);
 
@@ -71,6 +141,11 @@ void app_main(void)
     uart_flush_input(RYLR998_UART_PORT);
 
 
-    // Tasks
-    xTaskCreate(at_command_task, "at_command_task", 4096, NULL, 5, NULL);
+    #ifdef MM_DEVICE
+        xTaskCreate(lora_mm_setup, "lora_mm_setup", 4096, NULL, 5, NULL);
+    #endif
+
+    #ifdef SATELLITE_DEVICE
+        xTaskCreate(lora_satellite_setup, "lora_satellite_setup", 4096, NULL, 5, NULL);
+    #endif
 }
