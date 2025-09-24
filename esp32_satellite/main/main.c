@@ -31,16 +31,19 @@
         printf("Sent: %s", at_command);
     }
 
+    // Task to send a test message
     void send_test(void *arg)
     {
         vTaskDelay(pdMS_TO_TICKS(5000));
         const char *message = "Hello from ESP32 via RYLR998!"; 
 
-        // semd message to MM device
+        // Send message (address 1 is MM device)
         send_lora_message(1, message);
         vTaskDelete(NULL);
     }
 
+
+    // Task to send AT commands for setup
     void lora_satellite_setup(void *arg)
     {
         vTaskDelay(pdMS_TO_TICKS(500));
@@ -67,6 +70,7 @@
             }
         }
 
+        // Start task to send test message
         xTaskCreate(send_test, "send_test", 2048, NULL, 5, NULL);
         vTaskDelete(NULL);
     }

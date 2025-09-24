@@ -20,7 +20,11 @@
     "task.h": "c",
     "complex": "c",
     "format": "c",
-    "cstdint": "c"
+    "cstdint": "c",
+    "array": "c",
+    "string": "c",
+    "string_view": "c",
+    "span": "c"
   },
   "idf.flashType": "UART",
   "idf.monitorPort": "/dev/tty.usbserial-0001"
