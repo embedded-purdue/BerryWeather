@@ -1,31 +1,26 @@
 {
-  "C_Cpp.intelliSenseEngine": "default",
-  "idf.espIdfPath": "/Users/connorpowell/esp/v5.5.1/esp-idf",
+  "idf.espIdfPathWin": "C:\\Users\\athyo\\esp\\v5.5.1\\esp-idf",
+  "idf.toolsPathWin": "C:\\Users\\athyo\\.espressif",
   "idf.pythonInstallPath": "C:\\Users\\athyo\\.espressif\\tools\\idf-python\\3.11.2\\python.exe",
+
   "idf.openOcdConfigs": [
     "board/esp32-wrover-kit-3.3v.cfg"
   ],
-  "idf.port": "/dev/tty.usbserial-0001",
-  "idf.toolsPath": "/Users/connorpowell/.espressif",
+
   "idf.customExtraVars": {
     "IDF_TARGET": "esp32"
   },
-  "clangd.path": "/Users/connorpowell/.espressif/tools/esp-clang/esp-19.1.2_20250312/esp-clang/bin/clangd",
+
+  "idf.monitorPort": "COM10",
+
+  "clangd.path": "C:\\Users\\athyo\\.espressif\\tools\\esp-clang\\esp-19.1.2_20250312\\esp-clang\\bin\\clangd.exe",
   "clangd.arguments": [
     "--background-index",
-    "--query-driver=/Users/connorpowell/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc",
-    "--compile-commands-dir=${workspaceFolder}/build"
+    "--query-driver=C:\\Users\\athyo\\.espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\bin\\xtensa-esp32-elf-gcc.exe",
+    "--compile-commands-dir=c:\\Users\\athyo\\BerryWeather_2\\BerryWeather\\esp32_satellite\\build"
   ],
-  "files.associations": {
-    "task.h": "c",
-    "complex": "c",
-    "format": "c",
-    "cstdint": "c",
-    "array": "c",
-    "string": "c",
-    "string_view": "c",
-    "span": "c"
-  },
-  "idf.flashType": "UART",
-  "idf.monitorPort": "/dev/tty.usbserial-0001"
+
+  // 👇 This is what links IntelliSense to your actual build config
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "C_Cpp.default.compileCommands": "c:\\Users\\athyo\\BerryWeather_2\\BerryWeather\\esp32_satellite\\build\\compile_commands.json"
 }
