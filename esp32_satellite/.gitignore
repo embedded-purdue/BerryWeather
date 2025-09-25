@@ -1,0 +1,159 @@
+koopa
+koopa0810
+Online
+
+koopa — 9/15/25, 10:02 PM
+Hmmm actually it doesn’t seem like it
+AtharvaBhide — 9/15/25, 10:02 PM
+I was trying to find some debugging videos to add to the doc, and was watching one for esp, and he mentioned a sep debugger
+so wanted to check
+for our 362 lab as well, we had another FTDI chip right?
+koopa — 9/15/25, 10:03 PM
+Yes we did
+Seems like the ESP32 s3 has debugging
+AtharvaBhide — 9/15/25, 10:19 PM
+Yo!
+https://github.com/AthyoP30/AthyoP30.github.io/blob/main/README.md
+GitHub
+AthyoP30.github.io/README.md at main · AthyoP30/AthyoP30.github.io
+Contribute to AthyoP30/AthyoP30.github.io development by creating an account on GitHub.
+AthyoP30.github.io/README.md at main · AthyoP30/AthyoP30.github.io
+https://docs.google.com/presentation/d/135Zr3EpHuCnyE11mIJ1bJsAXf5UA8IEY4MSeEUtnzpI/edit?usp=sharing
+Google Docs
+BerryWeather 9/21/2025
+BerryWeather Workday 2 ES@P | Fall ‘25 | 9/21/25
+Image
+Was thinking of having them go through this material and then create 1-2 slides and answer the questions given and kinda present
+koopa — 9/15/25, 10:19 PM
+Dude this is awesome!
+AtharvaBhide — 9/15/25, 10:19 PM
+could u take a look when free?
+koopa — 9/15/25, 10:20 PM
+I’ll indepth look through it first thing tomorrow morning
+But that sounds like a great idea
+You rope Jain in?
+AtharvaBhide — 9/15/25, 10:20 PM
+Im just gonna send the links rn
+AtharvaBhide — 9/16/25, 9:56 AM
+Thoughts? Jain said it might be a lil too much for ppl
+Was thinking of assigning ppl sections
+koopa — 9/16/25, 9:57 AM
+I will disagree with Jain on this. These people signed up and we have some time before real emedded C will be written
+They need to have a good understanding
+I have been going through it and none of it is too long. Most will skim it anyway right?
+AtharvaBhide — 9/16/25, 10:01 AM
+Okay gotcha! Yea I tried not to pick very long videos and articles
+Aight then, ill send out a message
+koopa — 9/20/25, 2:38 PM
+Thanks dog!
+AtharvaBhide — Yesterday at 9:27 PM
+yoo
+do u have push access for github?
+i do not i think
+koopa — Yesterday at 9:43 PM
+i do i think
+AtharvaBhide — Yesterday at 9:45 PM
+could u add me to push access?
+koopa — Yesterday at 9:45 PM
+Let me check
+whats ur username
+AtharvaBhide — Yesterday at 9:49 PM
+Athyo30
+koopa — Yesterday at 9:50 PM
+sent an invitation
+AtharvaBhide — Yesterday at 9:54 PM
+Thanks!
+AtharvaBhide — Yesterday at 10:09 PM
+oh lol still cant push
+maybe jain has to add me lol
+koopa — Yesterday at 10:26 PM
+whats it saying
+AtharvaBhide — 1:44 PM
+info: please complete authentication in your browser...
+remote: {"auth_status":"access_denied_to_user","body":"Permission to embedded-purdue/BerryWeather.git denied to Athyo30."}
+fatal: unable to access 'https://github.com/embedded-purdue/BerryWeather.git/': The requested URL returned error: 403
+koopa — 4:01 PM
+Use ssh not url
+AtharvaBhide — 4:03 PM
+oh ok damn will it not allow url?
+koopa — 4:04 PM
+Usually not for me
+Did ssh work?
+SSH uses ur ssh keys which is like guaranteed to work
+koopa — 9:42 PM
+Did SSH work for you?
+Also has Jain been helping you?
+AtharvaBhide — 9:44 PM
+im working on that rn, was doing the on ramp stuff rn
+AtharvaBhide — 9:44 PM
+for the on ramp stuff, not much but thats ok lol. Ill try and ask him to help on the sensor allocation and plan for sunday
+AtharvaBhide — 9:55 PM
+Okay yea Idt I have permission to push yet
+Could you please add this gitignore?
+# ------------------------------------------------------------------------------
+# ESP-IDF project .gitignore template
+# ------------------------------------------------------------------------------
+
+# Build output (always local, never commit)
+build/
+Expand
+message.txt
+2 KB
+﻿
+AtharvaBhide
+athyobhide
+ 
+# ------------------------------------------------------------------------------
+# ESP-IDF project .gitignore template
+# ------------------------------------------------------------------------------
+
+# Build output (always local, never commit)
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.cmake
+*.ninja
+*.o
+*.obj
+*.elf
+*.bin
+*.map
+*.log
+
+# ESP-IDF project configuration (local per dev)
+sdkconfig
+sdkconfig.old
+sdkconfig.defaults # if you create a template, rename and commit intentionally
+
+# VS Code settings (machine-specific paths, COM ports, etc.)
+.vscode/
+
+# Python environments / caches
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.env/
+pip-wheel-metadata/
+*.egg-info/
+
+# IDF tools / downloaded dependencies
+.espressif/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.tmp
+*.swp
+*.swo
+
+# ------------------------------------------------------------------------------
+# End of .gitignore
+# ------------------------------------------------------------------------------
+message.txt
+2 KB
