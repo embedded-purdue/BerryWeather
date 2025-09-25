@@ -1,0 +1,52 @@
+# ------------------------------------------------------------------------------
+# ESP-IDF project .gitignore template
+# ------------------------------------------------------------------------------
+
+# Build output (always local, never commit)
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.cmake
+*.ninja
+*.o
+*.obj
+*.elf
+*.bin
+*.map
+*.log
+
+# ESP-IDF project configuration (local per dev)
+sdkconfig
+sdkconfig.old
+sdkconfig.defaults # if you create a template, rename and commit intentionally
+
+# VS Code settings (machine-specific paths, COM ports, etc.)
+.vscode/
+
+# Python environments / caches
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.env/
+pip-wheel-metadata/
+*.egg-info/
+
+# IDF tools / downloaded dependencies
+.espressif/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.tmp
+*.swp
+*.swo
+
+# ------------------------------------------------------------------------------
+# End of .gitignore
+# ------------------------------------------------------------------------------
