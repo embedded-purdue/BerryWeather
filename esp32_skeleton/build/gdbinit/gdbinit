@@ -1,0 +1,2 @@
+source /Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_skeleton/build/gdbinit/symbols
+source /Users/connorpowell/Documents/Purdue/ES@P/BerryWeather/BerryWeather/esp32_skeleton/build/gdbinit/connect
