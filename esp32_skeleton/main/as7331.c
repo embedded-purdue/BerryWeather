@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "driver/i2c.h"
 
-#define AS7331_ADDR 0xXX // Replace with your AS7331 sensor's I2C address
+#define AS7331_ADDR 0x74 // AS7331 sensor's I2C address- Can run 4 AS7331s on the same I2C bus with A1 and A0 pins defining two lowest-order bits (high or low) - Assuming both A1 and A0 tied to GND
 #define RESET_REG_AS7331 0xXX
 #define RESET_VALUE_AS7331 0xXX
 
