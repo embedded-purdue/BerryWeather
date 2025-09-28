@@ -14,7 +14,7 @@
 
 
 #define SATELLITE_DEVICE
-// #define MM_DEVICE
+#define MM_DEVICE
 
 #ifdef SATELLITE_DEVICE
     // Function to send LoRa message with AT+SEND command
