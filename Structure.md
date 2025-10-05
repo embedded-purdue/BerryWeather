@@ -111,4 +111,46 @@ flowchart TD
 
 ## Ready-to-Use Checklists
 
-### S
+### Satellite Startup (🔵)
+
+* [ ] Init clocks, UART, GPIO, sensors
+* [ ] `Setup_comm` → LoRa ready
+* [ ] Enable `coll_X` tasks (🟢)
+* [ ] Start periodic timer for `Send_loraMsg` (🔴)
+
+### Middle Man Startup (🔵)
+
+* [ ] Init UART/LoRa RX path
+* [ ] `Setup_mqtt` publishes discovery topics (retain ✅, QoS 1)
+* [ ] Start `Listen` (🟢) and ensure RX queue is draining to `Send_mqtt` (🔴)
+
+---
+
+## File/Module Hints (Optional)
+
+```
+/firmware
+  /satellite
+    tasks_setup_comm.c
+    task_send_test.c
+    task_send_lora.c
+    task_coll_temp.c
+    task_coll_humidity.c
+    task_coll_soiltemp.c
+    task_coll_soilmoist.c
+    sensors/*.c
+    lora/*.c
+  /middleman
+    tasks_setup_comm.c
+    task_setup_mqtt.c
+    task_listen.c
+    task_send_mqtt.c
+    mqtt/*.c
+    lora/*.c
+  /common
+    proto_packets.h/.c
+    sensors_shared.h/.c
+    config.h
+```
+
+> Keep names 1:1 with task labels for clarity. Each task file exposes `void vTaskName(void* pvParameters)` and internal helpers.
