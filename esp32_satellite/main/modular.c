@@ -42,7 +42,7 @@ void common_LoRA_setup(int addr)
         "AT+MODE=0\r\n",
     };
     const int num_commands = sizeof(commands) / sizeof(commands[0]);
-    for (int i = 0; i < (int)(sizeof(commands)/sizeof(commands[0])); i++) {
+    for (int i = 0; i < num_commands; i++) {
         send_cmd_and_print(commands[i]);
     }
 
